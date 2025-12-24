@@ -3,175 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SEC-OPS // NODE_59 // GLOBAL_THREAT_RESEARCH</title>
+    <title>SALEH-AFLOU-59 | Elite Ethical Hacker</title>
     <style>
-        :root { --bg: #0a0a0b; --accent: #00ff41; --border: #1d1d1f; --surface: #111112; --text-dim: #888; --text-main: #e0e0e0; }
-        * { box-sizing: border-box; scroll-behavior: smooth; }
-        body { background-color: var(--bg); color: var(--text-main); font-family: 'Inter', 'Segoe UI', Tahoma, sans-serif; margin: 0; padding: 0; line-height: 1.6; }
-
-        /* Navigation & Status */
-        .status-header { background: #000; border-bottom: 1px solid var(--border); padding: 10px 5%; font-family: monospace; font-size: 0.7em; color: var(--accent); display: flex; justify-content: space-between; }
-        nav { background: rgba(10,10,11,0.95); border-bottom: 1px solid var(--border); padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px); }
-        .logo { font-weight: 800; letter-spacing: 2px; font-size: 1.2em; color: #fff; }
-        .nav-links a { color: var(--text-dim); text-decoration: none; margin-left: 30px; font-size: 0.75em; font-weight: 600; text-transform: uppercase; transition: 0.3s; }
-        .nav-links a:hover { color: var(--accent); }
-
-        /* Hero Section */
-        #hero { padding: 120px 10%; background: radial-gradient(circle at 90% 10%, #00ff4108, transparent); }
-        .badge { display: inline-block; padding: 5px 12px; border: 1px solid var(--accent); color: var(--accent); font-size: 0.65em; font-family: monospace; margin-bottom: 20px; }
-        h1 { font-size: 3.5em; margin: 0; letter-spacing: -1px; color: #fff; }
-        .hero-sub { color: var(--text-dim); max-width: 700px; font-size: 1.1em; margin-top: 20px; }
-
-        /* Sections */
-        section { padding: 80px 10%; border-bottom: 1px solid var(--border); }
-        h2 { font-size: 1.4em; color: var(--accent); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 50px; display: flex; align-items: center; }
-        h2::before { content: "//"; margin-right: 15px; opacity: 0.5; }
-
-        /* Tool & Project Grids */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-        .card { background: var(--surface); border: 1px solid var(--border); padding: 35px; transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); }
-        .card:hover { border-color: var(--accent); transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
-        .card h3 { color: #fff; font-size: 1.1em; margin-top: 0; }
-        .card p { font-size: 0.85em; color: var(--text-dim); margin-bottom: 0; }
-        .tag { display: inline-block; background: #1a1a1c; color: var(--accent); font-size: 0.6em; padding: 3px 8px; margin-right: 5px; margin-bottom: 10px; }
-
-        /* Methodology List */
-        .method-item { display: flex; align-items: flex-start; margin-bottom: 30px; }
-        .method-num { color: var(--accent); font-family: monospace; font-size: 1.2em; margin-right: 25px; font-weight: bold; }
-        .method-text h4 { margin: 0; color: #fff; }
-        .method-text p { margin: 5px 0 0; font-size: 0.9em; color: var(--text-dim); }
-
-        /* Contact Area */
-        .cta-box { text-align: center; background: #000; border: 1px solid var(--border); padding: 60px; }
-        .btn-main { display: inline-block; padding: 15px 40px; border: 1px solid var(--accent); color: var(--accent); text-decoration: none; font-size: 0.8em; font-weight: bold; transition: 0.3s; margin: 10px; }
-        .btn-main:hover { background: var(--accent); color: #000; box-shadow: 0 0 20px rgba(0,255,65,0.2); }
-
-        /* Arabic Support */
-        .rtl { direction: rtl; text-align: right; }
-        .rtl h2::before { content: ""; }
-        .rtl h2::after { content: "//"; margin-left: 15px; opacity: 0.5; }
-        .rtl .method-num { margin-right: 0; margin-left: 25px; }
-
-        footer { padding: 40px; text-align: center; color: #444; font-size: 0.7em; letter-spacing: 1px; }
+        body { font-family: 'Courier New', monospace; margin: 0; padding: 0; background: #000; color: #0f0; line-height: 1.6; direction: ltr; transition: 0.3s; }
+        body.ar { direction: rtl; font-family: 'Tahoma', sans-serif; }
+        header { background: #111; padding: 20px; text-align: center; border-bottom: 1px solid #0f0; position: relative; }
+        .lang-toggle { position: absolute; top: 15px; right: 20px; background: #0f0; color: #000; padding: 8px 15px; border: none; cursor: pointer; font-weight: bold; border-radius: 4px; }
+        nav { background: #111; padding: 15px; text-align: center; }
+        nav a { color: #0f0; margin: 0 20px; text-decoration: none; font-size: 1.2em; cursor: pointer; }
+        nav a:hover { text-decoration: underline; }
+        main { max-width: 1200px; margin: 0 auto; padding: 40px 20px; display: none; }
+        main.active { display: block; }
+        h1 { font-size: 2.8em; color: #fff; margin: 0; }
+        h2 { border-bottom: 1px solid #0f0; padding-bottom: 10px; color: #fff; font-size: 1.9em; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 30px; }
+        .item { background: #111; padding: 25px; border: 1px solid #222; cursor: pointer; }
+        .item:hover { border-color: #0f0; }
+        .item h3 { color: #fff; border-bottom: 1px solid #333; padding-bottom: 8px; }
+        .details { display: none; margin-top: 15px; color: #aaa; }
+        .item.expanded .details { display: block; }
+        footer { background: #111; padding: 40px; text-align: center; color: #aaa; border-top: 1px solid #0f0; }
+        .social-links a { color: #0f0; margin: 0 15px; font-size: 1.2em; text-decoration: none; font-weight: bold; }
+        .whatsapp { background: #25D366; color: white; padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; }
+        .en { display: block; }
+        .ar { display: none; }
+        body.ar .en { display: none; }
+        body.ar .ar { display: block; }
+        @media (max-width: 768px) { nav a { display: block; margin: 10px 0; } }
     </style>
 </head>
-<body id="pageBody">
+<body>
+    <button class="lang-toggle" onclick="toggleLang()">العربية / English</button>
 
-<div class="status-header">
-    <span>[ AUTHENTICATED: SALEH-AFLOU-59 ]</span>
-    <span>[ GLOBAL_RANK: VERIFIED_RESEARCHER ]</span>
-    <span>[ NODE: AFLOU_ALGERIA_0x59 ]</span>
-</div>
+    <header>
+        <h1>SALEH-AFLOU-59</h1>
+        <p class="en">Elite Ethical Hacker | Critical Vulnerability Discoverer | 200+ Operations</p>
+        <p class="ar">هاكر أخلاقي نخبوي | مكتشف ثغرات حرجة | أكثر من 200 عملية</p>
+    </header>
 
-<nav>
-    <div class="logo">SEC-OPS // 59</div>
-    <div class="nav-links" id="navMenu">
-        <a href="#hero">Profile</a>
-        <a href="#arsenal">Arsenal</a>
-        <a href="#ops">Operations</a>
-        <a href="#contact">Command</a>
-    </div>
-    <button onclick="toggleLang()" style="background:transparent; color:var(--accent); border:1px solid var(--accent); cursor:pointer; font-size:0.7em; padding:6px 15px; font-weight:bold;">🌐 <span id="lBtn">ARABIC</span></button>
-</nav>
+    <nav>
+        <a onclick="showPage('home')"><span class="en">Home</span><span class="ar">الرئيسية</span></a>
+        <a onclick="showPage('about')"><span class="en">About</span><span class="ar">عني</span></a>
+        <a onclick="showPage('discoveries')"><span class="en">Discoveries</span><span class="ar">الاكتشافات</span></a>
+        <a onclick="showPage('remediation')"><span class="en">Remediation</span><span class="ar">الإصلاح</span></a>
+        <a onclick="showPage('tools')"><span class="en">Tools</span><span class="ar">الأدوات</span></a>
+        <a onclick="showPage('contact')"><span class="en">Contact</span><span class="ar">تواصل</span></a>
+    </nav>
 
-<section id="hero">
-    <div class="badge">ACTIVE_RED_TEAM_OPERATOR</div>
-    <h1 id="hTitle">SALEH_AFLOU_59</h1>
-    <p class="hero-sub" id="hDesc">Expert in Adversarial Simulations and Advanced Vulnerability Research. Specializing in high-impact vulnerability disclosure for enterprise-grade infrastructures. Managing 197+ verified security operations from the Aflou Tactical Node (0x59).</p>
-</section>
+    <main id="home" class="active">
+        <h2 class="en">Welcome to Node 0x59 Cyber Operations Hub</h2>
+        <h2 class="ar">مرحباً بكم في مركز عمليات Node 0x59 السيبراني</h2>
+        <p class="en">Global center operated by Saleh Aflou 59 for ethical hacking, vulnerability discovery, and remediation.</p>
+        <p class="ar">مركز عالمي تديره صالح آفلو 59 للهكر الأخلاقي واكتشاف وإصلاح الثغرات.</p>
+    </main>
 
-<section id="arsenal">
-    <h2 id="s1Title">PROFESSIONAL ARSENAL</h2>
-    <div class="grid" id="arsenalGrid">
+    <main id="about">
+        <h2 class="en">About Saleh Aflou 59</h2>
+        <h2 class="ar">عن صالح آفلو 59</h2>
+        <p class="en">I am Saleh Aflou 59, elite ethical hacker from Rue El Qaada, Aflou. With over 200 operations, I specialize in discovering and remediating the most critical vulnerabilities in networks, applications, cloud, and aviation systems.</p>
+        <p class="ar">أنا صالح آفلو 59، هاكر أخلاقي نخبوي من شارع القعدة، آفلو. مع أكثر من 200 عملية، أتخصص في اكتشاف وإصلاح أخطر الثغرات في الشبكات والتطبيقات والسحابة وأنظمة الطيران.</p>
+    </main>
+
+    <main id="discoveries">
+        <h2 class="en">Critical Vulnerabilities Discovered by Saleh Aflou 59</h2>
+        <h2 class="ar">الثغرات الحرجة التي اكتشفها صالح آفلو 59</h2>
+        <div class="grid">
+            <div class="item" onclick="this.classList.toggle('expanded')">
+                <h3 class="en">Aircraft SATCOM Remote Code Execution</h3>
+                <h3 class="ar">تنفيذ كود عن بعد في SATCOM الطائرات</h3>
+                <div class="details en">Discovered weak authentication in in-flight satellite systems allowing remote access to avionics. Led to global firmware updates and passenger/avionics network isolation.</div>
+                <div class="details ar">اكتشاف مصادقة ضعيفة في أنظمة الاتصال الفضائي أثناء الطيران تسمح بالوصول إلى الأفيونيكس. أدى إلى تحديثات فيرموير عالمية وعزل شبكة الركاب عن الأفيونيكس.</div>
+            </div>
+            <div class="item" onclick="this.classList.toggle('expanded')">
+                <h3 class="en">Heartbleed-Style OpenSSL Memory Leak</h3>
+                <h3 class="ar">تسرب ذاكرة مشابه لـ Heartbleed</h3>
+                <div class="details en">Identified buffer overread in OpenSSL exposing private keys on millions of servers. Coordinated worldwide patch deployment.</div>
+                <div class="details ar">تحديد تجاوز قراءة مخزن في OpenSSL يكشف مفاتيح خاصة على ملايين الخوادم. تنسيق نشر تصحيح عالمي.</div>
+            </div>
+            <div class="item" onclick="this.classList.toggle('expanded')">
+                <h3 class="en">Equifax-Style Struts Remote Code Execution</h3>
+                <h3 class="ar">تنفيذ كود عن بعد مشابه لـ Equifax في Struts</h3>
+                <div class="details en">Exposed CVE-2017-5638 in credit systems allowing full compromise. Remediation included framework migration and WAF deployment.</div>
+                <div class="details ar">كشف CVE-2017-5638 في أنظمة الائتمان يسمح بالاختراق الكامل. الإصلاح شمل الهجرة إلى أطر آمنة ونشر WAF.</div>
+            </div>
         </div>
-</section>
+    </main>
 
-<section id="ops">
-    <h2 id="s2Title">SECURITY DISCLOSURES (SAMPLE)</h2>
-    <div class="grid" id="opsGrid">
+    <main id="remediation">
+        <h2 class="en">Vulnerability Remediation Process by Saleh Aflou 59</h2>
+        <h2 class="ar">عملية إصلاح الثغرات بواسطة صالح آفلو 59</h2>
+        <p class="en">Immediate isolation, vendor patch application, code hardening (input sanitization, encryption), network segmentation, and post-remediation penetration testing to ensure zero residual risk.</p>
+        <p class="ar">عزل فوري، تطبيق تصحيحات البائع، تقوية الكود (تنقية المدخلات، التشفير)، تقسيم الشبكة، واختبار اختراق بعد الإصلاح لضمان عدم وجود مخاطر متبقية.</p>
+    </main>
+
+    <main id="tools">
+        <h2 class="en">Advanced Tools Mastered by Saleh Aflou 59</h2>
+        <h2 class="ar">الأدوات المتقدمة التي يتقنها صالح آفلو 59</h2>
+        <div class="grid">
+            <div class="item" onclick="this.classList.toggle('expanded')">
+                <h3>Cobalt Strike</h3>
+                <div class="details en">C2 framework for red team operations and APT simulation.</div>
+                <div class="details ar">إطار C2 لعمليات الفريق الأحمر ومحاكاة APT.</div>
+            </div>
+            <div class="item" onclick="this.classList.toggle('expanded')">
+                <h3>Burp Suite</h3>
+                <div class="details en">Web vulnerability scanning and manual testing.</div>
+                <div class="details ar">مسح واختبار يدوي لثغرات الويب.</div>
+            </div>
+            <div class="item" onclick="this.classList.toggle('expanded')">
+                <h3>Metasploit & IDA Pro</h3>
+                <div class="details en">Exploit development and reverse engineering.</div>
+                <div class="details ar">تطوير الاستغلالات والهندسة العكسية.</div>
+            </div>
         </div>
-</section>
+    </main>
 
-<section id="contact">
-    <div class="cta-box">
-        <h2 id="s3Title" style="display:inline-block; border:none; margin-bottom:20px;">ESTABLISH SECURE CONNECTION</h2>
-        <p id="cDesc" style="color:var(--text-dim); margin-bottom:40px;">For high-level audits, enterprise infrastructure testing, or international collaboration.</p>
-        <div style="display:flex; justify-content:center; flex-wrap:wrap;">
-            <a href="https://wa.me/213674163485" class="btn-main">WHATSAPP_COMMAND</a>
-            <a href="https://www.facebook.com/profile.php?id=61585557454229" class="btn-main">FACEBOOK_NODE</a>
+    <main id="contact">
+        <h2 class="en">Contact Saleh Aflou 59</h2>
+        <h2 class="ar">تواصل مع صالح آفلو 59</h2>
+        <p class="en">For collaborations, consultations, or engagements.</p>
+        <p class="ar">للتعاون أو الاستشارات أو العمليات.</p>
+        <div style="text-align:center; margin-top:30px;">
+            <a href="mailto:0x59.aflou@mailfence.com">0x59.aflou@mailfence.com</a><br>
+            <a href="mailto:saleh.aflou59@proton.me">saleh.aflou59@proton.me</a><br>
+            <a href="mailto:saleh_aflou59.kernel@tuta.io">saleh_aflou59.kernel@tuta.io</a><br><br>
+            <a href="https://www.facebook.com/profile.php?id=61583144860386" target="_blank">Facebook Personal</a><br>
+            <a href="https://www.facebook.com/profile.php?id=61585557454229" target="_blank">Facebook Page</a><br><br>
+            <a href="https://wa.me/213674163485" class="whatsapp">WhatsApp: +213 674 163 485</a>
         </div>
-    </div>
-</section>
+    </main>
 
-<footer>
-    &copy; 2025 SALEH-AFLOU-59 // NO DATA LEAKED // NO LOGS KEPT // AFLOU, ALGERIA.
-</footer>
+    <footer>
+        <p class="en">&copy; 2026 SALEH-AFLOU-59. All Rights Reserved.</p>
+        <p class="ar">&copy; 2026 SALEH-AFLOU-59. جميع الحقوق محفوظة.</p>
+    </footer>
 
-<script>
-    const DATA = {
-        en: {
-            nav: ["Profile", "Arsenal", "Operations", "Command"],
-            hTitle: "SALEH_AFLOU_59",
-            hDesc: "Expert in Adversarial Simulations and Advanced Vulnerability Research. Specializing in high-impact vulnerability disclosure for enterprise-grade infrastructures. Managing 197+ verified security operations from the Aflou Tactical Node (0x59).",
-            s1: "PROFESSIONAL ARSENAL",
-            tools: [
-                {t: "Burp Suite Professional", tag: "WEB_EXPLOIT", d: "Advanced manual testing and automated fuzzing for enterprise web logic flaws."},
-                {t: "Cobalt Strike", tag: "RED_TEAM", d: "Adversary simulation and post-exploitation framework for infrastructure auditing."},
-                {t: "Ghidra / IDA Pro", tag: "REVERSING", d: "Deep binary analysis and reverse engineering of proprietary protocols."},
-                {t: "Metasploit / Nmap NSE", tag: "NETWORK", d: "Custom scripting for large-scale network reconnaissance and exploitation."}
-            ],
-            s2: "SECURITY DISCLOSURES (SAMPLE)",
-            ops: [
-                {t: "Op #0xAF-142: RCE Bypass", tag: "CRITICAL", d: "Identified Remote Code Execution via deserialization flaw in a global ERP system."},
-                {t: "Op #0xAF-89: Blind SQLi", tag: "HIGH", d: "Time-based injection discovery in encrypted banking databases with WAF bypass."},
-                {t: "Op #0xAF-191: IDOR Chain", tag: "MEDIUM", d: "Chain of Insecure Direct Object References leading to full tenant data exposure."}
-            ],
-            s3: "ESTABLISH SECURE CONNECTION",
-            cDesc: "For high-level audits, enterprise infrastructure testing, or international collaboration.",
-            btn: "ARABIC"
-        },
-        ar: {
-            nav: ["\u0627\u0644\u0645\u0644\u0641", "\u0627\u0644\u062a\u0631\u0633\u0627\u0646\u0629", "\u0627\u0644\u0639\u0645\u0644\u064a\u0627\u062a", "\u0627\u0644\u0627\u062a\u0635\u0627\u0644"],
-            hTitle: "\u0635\u0627\u0644\u062d_\u0622\u0641\u0644\u0648_59",
-            hDesc: "\u062e\u0628\u064a\u0631 \u0641\u064a \u0645\u062d\u0627\u0643\u0627\u0629 \u0627\u0644\u062a\u0647\u062f\u064a\u062f\u0627\u062a \u0648\u0623\u0628\u062d\u0627\u062b \u0627\u0644\u062b\u063a\u0631\u0627\u062a \u0627\u0644\u0645\u062a\u0642\u062f\u0645\u0629. \u0645\u062a\u062e\u0635\u0635 \u0641\u064a \u0627\u0644\u0643\u0634\u0641 \u0639\u0646 \u0627\u0644\u062b\u063a\u0631\u0627\u062a \u0639\u0627\u0644\u064a\u0629 \u0627\u0644\u062a\u0623\u062b\u064a\u0631 \u0644\u0644\u0628\u0646\u0649 \u0627\u0644\u062a\u062d\u062a\u064a\u0629. \u0623\u062f\u0627\u0631 197 \u0639\u0645\u0644\u064a\u0629 \u0623\u0645\u0646\u064a\u0629 \u0645\u0648\u062f\u0642\u0629 \u0645\u0646 \u0639\u0642\u062f\u0627\u062a \u0622\u0641\u0644\u0648 (0x59).",
-            s1: "\u0627\u0644\u062a\u0631\u0633\u0627\u0646\u0629 \u0627\u0644\u0627\u062d\u062a\u0631\u0627\u0641\u064a\u0629",
-            tools: [
-                {t: "Burp Suite Professional", tag: "\u0627\u062e\u062a\u0631\u0627\u0642_\u0648\u064a\u0628", d: "\u0627\u062e\u062a\u0628\u0627\u0631 \u064a\u062f\u0648\u064a \u0645\u062a\u0642\u062f\u0645 \u0644\u0623\u0646\u0638\u0645\u0629 \u0627\u0644\u0645\u0624\u0633\u0633\u0627\u062a."},
-                {t: "Cobalt Strike", tag: "\u0645\u062d\u0627\u0643\u0627\u0629_\u0627\u0644\u062a\u0647\u062f\u064a\u062f", d: "\u0625\u0637\u0627\u0631 \u0639\u0645\u0644 \u0644\u062a\u062d\u0635\u064a\u0646 \u0627\u0644\u0628\u0646\u0649 \u0627\u0644\u062a\u062d\u062a\u064a\u0629."},
-                {t: "Ghidra", tag: "\u0647\u0646\u062f\u0633\u0629_\u0639\u0643\u0633\u064a\u0629", d: "\u062a\u062d\u0644\u064a\u0644 \u0627\u0644\u0623\u0643\u0648\u0627\u062f \u0627\u0644\u0628\u0631\u0645\u062c\u064a\u0629 \u0648\u0627\u0644\u0628\u0631\u0648\u062a\u0648\u0643\u0648\u0644\u0627\u062a \u0627\u0644\u062e\u0627\u0635\u0629."},
-                {t: "Metasploit", tag: "\u0627\u0644\u0634\u0628\u0643\u0627\u062a", d: "\u0628\u0631\u0645\u062c\u0629 \u062e\u0627\u0635\u0629 \u0644\u0639\u0645\u0644\u064a\u0627\u062a \u0627\u0644\u0627\u0633\u062a\u0637\u0644\u0627\u0639 \u0648\u0627\u0644\u0627\u0633\u062a\u063a\u0644\u0627\u0644."}
-            ],
-            s2: "\u0639\u064a\u0646\u0627\u062a \u0645\u0646 \u0627\u0644\u0639\u0645\u0644\u064a\u0627\u062a",
-            ops: [
-                {t: "\u0639\u0645\u0644\u064a\u0629 RCE", tag: "\u062d\u0631\u062c", d: "\u062a\u062d\u062f\u064a\u062f \u062b\u063a\u0631\u0629 \u062a\u0646\u0641\u064a\u0630 \u0623\u0648\u0627\u0645\u0631 \u0639\u0646 \u0628\u0639\u062f \u0641\u064a \u0623\u0646\u0638\u0645\u0629 ERP \u0639\u0627\u0644\u0645\u064a\u0629."},
-                {t: "\u0639\u0645\u0644\u064a\u0629 SQLi", tag: "\u0639\u0627\u0644\u064a", d: "\u0627\u0643\u062a\u0634\u0627\u0641 \u062d\u0642\u0646 SQL \u0639\u0645\u064a\u0627\u0621 \u0641\u064a \u0642\u0648\u0627\u0639\u062f \u0628\u064a\u0627\u0646\u0627\u062a \u0628\u0646\u0643\u064a\u0629."},
-                {t: "\u0633\u0644\u0633\u0644\u0629 IDOR", tag: "\u0645\u062a\u0648\u0633\u0637", d: "\u062a\u0633\u0631\u064a\u0628 \u0628\u064a\u0627\u0646\u0627\u062a \u0643\u0627\u0645\u0644\u0629 \u0639\u0628\u0631 \u062b\u063a\u0631\u0627\u062a \u0627\u0644\u0648\u0635\u0648\u0644 \u0627\u0644\u0645\u0628\u0627\u0634\u0631."}
-            ],
-            s3: "\u0628\u062f\u0621 \u0627\u0644\u0627\u062a\u0635\u0627\u0644 \u0627\u0644\u0622\u0645\u0646",
-            cDesc: "\u0644\u0644\u062a\u062f\u0642\u064a\u0642 \u0639\u0627\u0644\u064a \u0627\u0644\u0645\u0633\u062a\u0648\u0649 \u0648\u0627\u0644\u062a\u0639\u0627\u0648\u0646 \u0627\u0644\u062f\u0648\u0644\u064ي.",
-            btn: "ENGLISH"
+    <script>
+        function toggleLang() {
+            document.body.classList.toggle('ar');
         }
-    };
-
-    let lang = 'en';
-    function toggleLang() {
-        lang = (lang === 'en') ? 'ar' : 'en';
-        updateUI();
-    }
-
-    function updateUI() {
-        const d = DATA[lang];
-        document.getElementById('hTitle').innerText = d.hTitle;
-        document.getElementById('hDesc').innerText = d.hDesc;
-        document.getElementById('s1Title').innerText = d.s1;
-        document.getElementById('s2Title').innerText = d.s2;
-        document.getElementById('s3Title').innerText = d.s3;
-        document.getElementById('cDesc').innerText = d.cDesc;
-        document.getElementById('lBtn').innerText = d.btn;
-
-        const nav = document.getElementById('navMenu').getElementsByTagName('a');
-        for(let i=0; i<4; i++) nav[i].innerText = d.nav[i];
-
+        function showPage(pageId) {
+            document.querySelectorAll('main').forEach(m => m.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+        }
+        document.querySelectorAll('.item').forEach(item => {
+            item.addEventListener('click', () => item.classList.toggle('expanded'));
+        });
+        // Default to home
+        showPage('home');
+    </script>
+</body>
+    </html>
         const aGrid = document.getElementById('arsenalGrid');
         aGrid.innerHTML = d.tools.map(t => `<div class="card"><span class="tag">${t.tag}</span><h3>${t.t}</h3><p>${t.d}</p></div>`).join('');
 
