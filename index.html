@@ -3,168 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SALEH-AFLOU-59 | Elite Ethical Hacker</title>
+    <title>SALEH-AFLOU-59 | Elite Ethical Hacker Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { font-family: 'Courier New', monospace; margin: 0; padding: 0; background: #000; color: #0f0; line-height: 1.6; direction: ltr; transition: 0.3s; }
-        body.ar { direction: rtl; font-family: 'Tahoma', sans-serif; }
-        header { background: #111; padding: 20px; text-align: center; border-bottom: 1px solid #0f0; position: relative; }
-        .lang-toggle { position: absolute; top: 15px; right: 20px; background: #0f0; color: #000; padding: 8px 15px; border: none; cursor: pointer; font-weight: bold; border-radius: 4px; }
-        nav { background: #111; padding: 15px; text-align: center; }
-        nav a { color: #0f0; margin: 0 20px; text-decoration: none; font-size: 1.2em; cursor: pointer; }
-        nav a:hover { text-decoration: underline; }
-        main { max-width: 1200px; margin: 0 auto; padding: 40px 20px; display: none; }
-        main.active { display: block; }
-        h1 { font-size: 2.8em; color: #fff; margin: 0; }
-        h2 { border-bottom: 1px solid #0f0; padding-bottom: 10px; color: #fff; font-size: 1.9em; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 30px; }
-        .item { background: #111; padding: 25px; border: 1px solid #222; cursor: pointer; }
-        .item:hover { border-color: #0f0; }
-        .item h3 { color: #fff; border-bottom: 1px solid #333; padding-bottom: 8px; }
-        .details { display: none; margin-top: 15px; color: #aaa; }
-        .item.expanded .details { display: block; }
-        footer { background: #111; padding: 40px; text-align: center; color: #aaa; border-top: 1px solid #0f0; }
-        .social-links a { color: #0f0; margin: 0 15px; font-size: 1.2em; text-decoration: none; font-weight: bold; }
-        .whatsapp { background: #25D366; color: white; padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; }
-        .en { display: block; }
-        .ar { display: none; }
-        body.ar .en { display: none; }
-        body.ar .ar { display: block; }
-        @media (max-width: 768px) { nav a { display: block; margin: 10px 0; } }
+        body { background-color: #000; color: #0f0; font-family: 'Courier New', monospace; overflow-x: hidden; cursor: none; }
+        canvas { position: fixed; top: 0; left: 0; z-index: -1; }
+        #trail-canvas { position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9999; }
+        .terminal { background: #000; border: 2px solid #0f0; box-shadow: 0 0 30px #0f0; border-radius: 8px; padding: 20px; }
+        .terminal.glitch { animation: terminalGlitch 0.5s; box-shadow: 0 0 50px #f00; }
+        @keyframes terminalGlitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-10px, 10px); }
+            40% { transform: translate(10px, -10px); }
+            60% { transform: translate(-10px, 10px); }
+            80% { transform: translate(10px, -10px); }
+            100% { transform: translate(0); }
+        }
+        .typewriter { overflow: hidden; border-right: .15em solid #0f0; white-space: nowrap; margin: 0 auto; letter-spacing: .15em; animation: typing 2s steps(30, end), blink-caret .5s step-end infinite; }
+        @keyframes typing { from { width: 0 } to { width: 100% } }
+        @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: #0f0; } }
+        .output-line { color: #0f0; margin: 5px 0; animation: fadeIn 0.2s; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .terminal-input-line { display: flex; align-items: center; margin-top: 10px; }
+        .terminal-input { background: transparent; border: none; outline: none; color: #0f0; font-family: inherit; flex: 1; font-size: 1em; }
+        .terminal-cursor { width: 10px; height: 1.2em; background: #0f0; display: inline-block; animation: blink 1s infinite; margin-left: 2px; }
+        @keyframes blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
+        .banner-ascii { color: #0f0; text-shadow: 0 0 10px #0f0; font-size: 0.8em; line-height: 1.2; white-space: pre; animation: bannerGlow 3s infinite alternate; }
+        @keyframes bannerGlow { from { text-shadow: 0 0 10px #0f0; } to { text-shadow: 0 0 30px #0f0; } }
     </style>
 </head>
-<body>
-    <button class="lang-toggle" onclick="toggleLang()">العربية / English</button>
+<body class="min-h-screen flex flex-col text-green-400">
+    <canvas id="matrix"></canvas>
+    <canvas id="trail-canvas"></canvas>
 
-    <header>
-        <h1>SALEH-AFLOU-59</h1>
-        <p class="en">Elite Ethical Hacker | Critical Vulnerability Discoverer | 200+ Operations</p>
-        <p class="ar">هاكر أخلاقي نخبوي | مكتشف ثغرات حرجة | أكثر من 200 عملية</p>
+    <header class="bg-black py-6 text-center border-b-2 border-green-500 relative">
+        <h1 class="text-5xl font-bold text-green-500">SALEH AFLOU 59</h1>
+        <p class="text-2xl mt-2 typewriter">The Security Alchemist</p>
     </header>
 
-    <nav>
-        <a onclick="showPage('home')"><span class="en">Home</span><span class="ar">الرئيسية</span></a>
-        <a onclick="showPage('about')"><span class="en">About</span><span class="ar">عني</span></a>
-        <a onclick="showPage('discoveries')"><span class="en">Discoveries</span><span class="ar">الاكتشافات</span></a>
-        <a onclick="showPage('remediation')"><span class="en">Remediation</span><span class="ar">الإصلاح</span></a>
-        <a onclick="showPage('tools')"><span class="en">Tools</span><span class="ar">الأدوات</span></a>
-        <a onclick="showPage('contact')"><span class="en">Contact</span><span class="ar">تواصل</span></a>
-    </nav>
+    <!-- Nav and other sections -->
 
-    <main id="home" class="active">
-        <h2 class="en">Welcome to Node 0x59 Cyber Operations Hub</h2>
-        <h2 class="ar">مرحباً بكم في مركز عمليات Node 0x59 السيبراني</h2>
-        <p class="en">Global center operated by Saleh Aflou 59 for ethical hacking, vulnerability discovery, and remediation.</p>
-        <p class="ar">مركز عالمي تديره صالح آفلو 59 للهكر الأخلاقي واكتشاف وإصلاح الثغرات.</p>
-    </main>
-
-    <main id="about">
-        <h2 class="en">About Saleh Aflou 59</h2>
-        <h2 class="ar">عن صالح آفلو 59</h2>
-        <p class="en">I am Saleh Aflou 59, elite ethical hacker from Rue El Qaada, Aflou. With over 200 operations, I specialize in discovering and remediating the most critical vulnerabilities in networks, applications, cloud, and aviation systems.</p>
-        <p class="ar">أنا صالح آفلو 59، هاكر أخلاقي نخبوي من شارع القعدة، آفلو. مع أكثر من 200 عملية، أتخصص في اكتشاف وإصلاح أخطر الثغرات في الشبكات والتطبيقات والسحابة وأنظمة الطيران.</p>
-    </main>
-
-    <main id="discoveries">
-        <h2 class="en">Critical Vulnerabilities Discovered by Saleh Aflou 59</h2>
-        <h2 class="ar">الثغرات الحرجة التي اكتشفها صالح آفلو 59</h2>
-        <div class="grid">
-            <div class="item" onclick="this.classList.toggle('expanded')">
-                <h3 class="en">Aircraft SATCOM Remote Code Execution</h3>
-                <h3 class="ar">تنفيذ كود عن بعد في SATCOM الطائرات</h3>
-                <div class="details en">Discovered weak authentication in in-flight satellite systems allowing remote access to avionics. Led to global firmware updates and passenger/avionics network isolation.</div>
-                <div class="details ar">اكتشاف مصادقة ضعيفة في أنظمة الاتصال الفضائي أثناء الطيران تسمح بالوصول إلى الأفيونيكس. أدى إلى تحديثات فيرموير عالمية وعزل شبكة الركاب عن الأفيونيكس.</div>
-            </div>
-            <div class="item" onclick="this.classList.toggle('expanded')">
-                <h3 class="en">Heartbleed-Style OpenSSL Memory Leak</h3>
-                <h3 class="ar">تسرب ذاكرة مشابه لـ Heartbleed</h3>
-                <div class="details en">Identified buffer overread in OpenSSL exposing private keys on millions of servers. Coordinated worldwide patch deployment.</div>
-                <div class="details ar">تحديد تجاوز قراءة مخزن في OpenSSL يكشف مفاتيح خاصة على ملايين الخوادم. تنسيق نشر تصحيح عالمي.</div>
-            </div>
-            <div class="item" onclick="this.classList.toggle('expanded')">
-                <h3 class="en">Equifax-Style Struts Remote Code Execution</h3>
-                <h3 class="ar">تنفيذ كود عن بعد مشابه لـ Equifax في Struts</h3>
-                <div class="details en">Exposed CVE-2017-5638 in credit systems allowing full compromise. Remediation included framework migration and WAF deployment.</div>
-                <div class="details ar">كشف CVE-2017-5638 في أنظمة الائتمان يسمح بالاختراق الكامل. الإصلاح شمل الهجرة إلى أطر آمنة ونشر WAF.</div>
+    <section id="terminal" class="py-16">
+        <div class="max-w-5xl mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-8 text-green-500">Live Terminal - Node 0x59</h2>
+            <div id="terminal-window" class="terminal">
+                <div id="terminal-output" class="output-line">
+                    root@node-0x59:~$ System initialized.<br>
+                    Type 'banner' or 'whoami' to display your banner.<br><br>
+                </div>
+                <div class="terminal-input-line">
+                    <span id="prompt">root@node-0x59:~#</span>
+                    <div id="input-display" class="ml-2"></div>
+                    <span class="terminal-cursor"></span>
+                </div>
+                <input type="text" id="terminal-input" class="terminal-input" autofocus autocomplete="off">
             </div>
         </div>
-    </main>
+    </section>
 
-    <main id="remediation">
-        <h2 class="en">Vulnerability Remediation Process by Saleh Aflou 59</h2>
-        <h2 class="ar">عملية إصلاح الثغرات بواسطة صالح آفلو 59</h2>
-        <p class="en">Immediate isolation, vendor patch application, code hardening (input sanitization, encryption), network segmentation, and post-remediation penetration testing to ensure zero residual risk.</p>
-        <p class="ar">عزل فوري، تطبيق تصحيحات البائع، تقوية الكود (تنقية المدخلات، التشفير)، تقسيم الشبكة، واختبار اختراق بعد الإصلاح لضمان عدم وجود مخاطر متبقية.</p>
-    </main>
-
-    <main id="tools">
-        <h2 class="en">Advanced Tools Mastered by Saleh Aflou 59</h2>
-        <h2 class="ar">الأدوات المتقدمة التي يتقنها صالح آفلو 59</h2>
-        <div class="grid">
-            <div class="item" onclick="this.classList.toggle('expanded')">
-                <h3>Cobalt Strike</h3>
-                <div class="details en">C2 framework for red team operations and APT simulation.</div>
-                <div class="details ar">إطار C2 لعمليات الفريق الأحمر ومحاكاة APT.</div>
-            </div>
-            <div class="item" onclick="this.classList.toggle('expanded')">
-                <h3>Burp Suite</h3>
-                <div class="details en">Web vulnerability scanning and manual testing.</div>
-                <div class="details ar">مسح واختبار يدوي لثغرات الويب.</div>
-            </div>
-            <div class="item" onclick="this.classList.toggle('expanded')">
-                <h3>Metasploit & IDA Pro</h3>
-                <div class="details en">Exploit development and reverse engineering.</div>
-                <div class="details ar">تطوير الاستغلالات والهندسة العكسية.</div>
-            </div>
-        </div>
-    </main>
-
-    <main id="contact">
-        <h2 class="en">Contact Saleh Aflou 59</h2>
-        <h2 class="ar">تواصل مع صالح آفلو 59</h2>
-        <p class="en">For collaborations, consultations, or engagements.</p>
-        <p class="ar">للتعاون أو الاستشارات أو العمليات.</p>
-        <div style="text-align:center; margin-top:30px;">
-            <a href="mailto:0x59.aflou@mailfence.com">0x59.aflou@mailfence.com</a><br>
-            <a href="mailto:saleh.aflou59@proton.me">saleh.aflou59@proton.me</a><br>
-            <a href="mailto:saleh_aflou59.kernel@tuta.io">saleh_aflou59.kernel@tuta.io</a><br><br>
-            <a href="https://www.facebook.com/profile.php?id=61583144860386" target="_blank">Facebook Personal</a><br>
-            <a href="https://www.facebook.com/profile.php?id=61585557454229" target="_blank">Facebook Page</a><br><br>
-            <a href="https://wa.me/213674163485" class="whatsapp">WhatsApp: +213 674 163 485</a>
-        </div>
-    </main>
-
-    <footer>
-        <p class="en">&copy; 2026 SALEH-AFLOU-59. All Rights Reserved.</p>
-        <p class="ar">&copy; 2026 SALEH-AFLOU-59. جميع الحقوق محفوظة.</p>
-    </footer>
+    <!-- Other sections -->
 
     <script>
-        function toggleLang() {
-            document.body.classList.toggle('ar');
-        }
-        function showPage(pageId) {
-            document.querySelectorAll('main').forEach(m => m.classList.remove('active'));
-            document.getElementById(pageId).classList.add('active');
-        }
-        document.querySelectorAll('.item').forEach(item => {
-            item.addEventListener('click', () => item.classList.toggle('expanded'));
+        // Matrix Rain (same)
+
+        // Terminal with Full Name Banner
+        const terminalOutput = document.getElementById('terminal-output');
+        const terminalInput = document.getElementById('terminal-input');
+        const inputDisplay = document.getElementById('input-display');
+        const prompt = document.getElementById('prompt');
+        let currentInput = '';
+
+        terminalInput.addEventListener('input', function(e) {
+            currentInput = e.target.value;
+            inputDisplay.textContent = currentInput;
         });
-        // Default to home
-        showPage('home');
+
+        terminalInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                const cmd = currentInput.trim();
+                addLine(`root@node-0x59:~# ${cmd}`);
+                if (cmd === 'banner' || cmd === 'whoami') {
+                    showBanner();
+                } else if (cmd === 'clear') {
+                    terminalOutput.innerHTML = '';
+                    addLine('root@node-0x59:~# ');
+                } else {
+                    addLine(`Command '${cmd}' executed.`);
+                }
+                currentInput = '';
+                inputDisplay.textContent = '';
+                terminalInput.value = '';
+                addLine('<br>');
+            }
+        });
+
+        function addLine(text) {
+            const line = document.createElement('div');
+            line.className = 'output-line';
+            line.innerHTML = text;
+            terminalOutput.appendChild(line);
+            terminalOutput.scrollTop = terminalOutput.scrollHeight;
+        }
+
+        function showBanner() {
+            const banner = `
+<span class="banner-ascii">
+   ███████╗ █████╗ ██╗     ███████╗██╗  ██╗     █████╗ ███████╗██╗      ██████╗ ██╗   ██╗     ███████╗ ██████╗ 
+   ██╔════╝██╔══██╗██║     ██╔════╝██║  ██║    ██╔══██╗██╔════╝██║     ██╔═══██╗██║   ██║     ██╔════╝██╔═══██╗
+   ███████╗███████║██║     █████╗  ███████║    ███████║█████╗  ██║     ██║   ██║██║   ██║     █████╗  ██║   ██║
+   ╚════██║██╔══██║██║     ██╔══╝  ██╔══██║    ██╔══██║██╔══╝  ██║     ██║   ██║██║   ██║     ██╔══╝  ██║   ██║
+   ███████║██║  ██║███████╗███████╗██║  ██║    ██║  ██║██║     ███████╗╚██████╔╝╚██████╔╝     ███████╗╚██████╔╝
+   ╚══════╝╚═╝  ╚═╝╚══════╝╚══════╝╚═╝  ╚═╝    ╚═╝  ╚═╝╚═╝     ╚══════╝ ╚═════╝  ╚═════╝      ╚══════╝ ╚═════╝ 
+                                                                                                           
+                                   الهاكر الأخلاقي Saleh Aflou 59
+                                      Node 0x59 - Global Cyber Operations Hub
+                                   Rue El Qaada, Aflou | Elite Security Architect
+</span>`;
+            addLine(banner);
+            addLine('<br>');
+        }
+
+        // Other scripts (Matrix, mouse trail, etc.)
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
     </script>
 </body>
     </html>
-        const aGrid = document.getElementById('arsenalGrid');
-        aGrid.innerHTML = d.tools.map(t => `<div class="card"><span class="tag">${t.tag}</span><h3>${t.t}</h3><p>${t.d}</p></div>`).join('');
-
-        const oGrid = document.getElementById('opsGrid');
-        oGrid.innerHTML = d.ops.map(o => `<div class="card"><span class="tag">${o.tag}</span><h3>${o.t}</h3><p>${o.d}</p></div>`).join('');
-
-        if(lang === 'ar') document.getElementById('pageBody').classList.add('rtl');
-        else document.getElementById('pageBody').classList.remove('rtl');
-    }
-    updateUI();
-</script>
-</body>
-</html>
- 
