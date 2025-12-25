@@ -1,214 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Saleh Aflou | Ethical Hacker & Cybersecurity Specialist</title>
-
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-
-  <style>
-    :root {
-      --bg: #0d1117;
-      --card: #161b22;
-      --text: #c9d1d9;
-      --muted: #8b949e;
-      --accent: #58a6ff;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
-    }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    header {
-      padding: 80px 20px;
-      text-align: center;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    header h1 {
-      font-size: 2.8rem;
-      font-weight: 700;
-    }
-
-    header h2 {
-      font-size: 1.2rem;
-      font-weight: 400;
-      color: var(--accent);
-      margin-top: 10px;
-    }
-
-    header p {
-      margin-top: 20px;
-      color: var(--muted);
-      font-size: 1rem;
-    }
-
-    section {
-      max-width: 1000px;
-      margin: 60px auto;
-      padding: 0 20px;
-    }
-
-    h3 {
-      font-size: 1.5rem;
-      margin-bottom: 20px;
-      border-left: 4px solid var(--accent);
-      padding-left: 10px;
-    }
-
-    .card {
-      background: var(--card);
-      padding: 25px;
-      border-radius: 8px;
-      margin-bottom: 20px;
-    }
-
-    ul {
-      list-style: none;
-    }
-
-    ul li {
-      padding: 8px 0;
-      color: var(--muted);
-    }
-
-    .skills {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-    }
-
-    .skills .card {
-      text-align: center;
-    }
-
-    .skills i {
-      font-size: 1.8rem;
-      color: var(--accent);
-      margin-bottom: 10px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 40px 20px;
-      color: var(--muted);
-      border-top: 1px solid #222;
-    }
-
-    footer a {
-      color: var(--accent);
-      margin: 0 10px;
-      text-decoration: none;
-      font-size: 1.2rem;
-    }
-
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 2.2rem;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<title>Restricted Internal Evaluation Portal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="classification" content="STRICTLY RESTRICTED – EMPLOYMENT EVALUATION ONLY">
+<style>
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial;
+  background: #fff;
+  color: #000;
+}
+#access, #portal { display: none; }
+#access { display: block; }
+.container {
+  max-width: 920px;
+  padding: 48px;
+}
+h1, h2 {
+  font-weight: 500;
+}
+h1 { font-size: 22px; }
+h2 { font-size: 16px; margin-top: 36px; }
+p, li {
+  font-size: 13px;
+  line-height: 1.85;
+}
+ul { padding-left: 18px; }
+button {
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  font-size: 13px;
+  cursor: pointer;
+}
+header, footer, nav {
+  border-bottom: 1px solid #000;
+  padding: 18px 48px;
+}
+footer {
+  border-top: 1px solid #000;
+  font-size: 11px;
+}
+nav a {
+  margin-right: 22px;
+  font-size: 13px;
+  text-decoration: none;
+  color: #000;
+}
+section { display: none; }
+section.active { display: block; }
+</style>
+<script>
+function proceed() {
+  document.getElementById('access').style.display = 'none';
+  document.getElementById('portal').style.display = 'block';
+}
+function show(id) {
+  document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+</script>
 </head>
+
 <body>
 
+<!-- ACCESS ACKNOWLEDGMENT -->
+<div id="access">
+  <div class="container">
+    <h1>Restricted Professional Material</h1>
+    <p>
+      This internal portal is provided solely for employment evaluation.
+      It contains no public demonstrations, no sensitive disclosures,
+      and no operational detail.
+    </p>
+    <p>
+      Access implies acknowledgment of confidentiality,
+      authorization boundaries, and legal constraints.
+    </p>
+    <button onclick="proceed()">Acknowledge & Continue</button>
+  </div>
+</div>
+
+<!-- INTERNAL PORTAL -->
+<div id="portal">
+
 <header>
-  <h1>Saleh Aflou</h1>
-  <h2>Ethical Hacker & Cybersecurity Specialist</h2>
-  <p>
-    Cybersecurity professional focused on protecting digital assets,
-    identifying vulnerabilities responsibly, and helping organizations
-    strengthen their security posture.
-  </p>
+  <h1>Internal Evaluation Portal</h1>
+  <p>High‑Sensitivity Professional Review</p>
 </header>
 
-<section>
-  <h3>Professional Summary</h3>
-  <div class="card">
-    <p>
-      Ethical Hacker with hands-on experience in vulnerability assessment,
-      penetration testing, and security analysis. I follow strict ethical
-      standards and responsible disclosure practices, aiming to help
-      organizations reduce risk and improve resilience against cyber threats.
-    </p>
-  </div>
+<nav>
+  <a href="#" onclick="show('identity')">Identity</a>
+  <a href="#" onclick="show('position')">Ethical Position</a>
+  <a href="#" onclick="show('experience')">Experience Domain</a>
+  <a href="#" onclick="show('discipline')">Operational Discipline</a>
+  <a href="#" onclick="show('intent')">Employment Intent</a>
+</nav>
+
+<div class="container">
+
+<section id="identity" class="active">
+  <h2>Professional Identity</h2>
+  <p>
+    Name: <strong>Saleh Aflou 59</strong><br>
+    Role: Ethical Hacker / Security Specialist
+  </p>
+  <p>
+    This portal exists to support private, controlled evaluation only.
+    No public portfolio is maintained by design.
+  </p>
 </section>
 
-<section>
-  <h3>Core Expertise</h3>
-  <div class="skills">
-    <div class="card">
-      <i class="fa-solid fa-shield-halved"></i>
-      <p>Penetration Testing</p>
-    </div>
-    <div class="card">
-      <i class="fa-solid fa-bug"></i>
-      <p>Vulnerability Assessment</p>
-    </div>
-    <div class="card">
-      <i class="fa-solid fa-network-wired"></i>
-      <p>Network Security</p>
-    </div>
-    <div class="card">
-      <i class="fa-solid fa-code"></i>
-      <p>Web Application Security</p>
-    </div>
-    <div class="card">
-      <i class="fa-brands fa-linux"></i>
-      <p>Linux & Bash</p>
-    </div>
-    <div class="card">
-      <i class="fa-brands fa-python"></i>
-      <p>Python for Security</p>
-    </div>
-  </div>
+<section id="position">
+  <h2>Ethical Position</h2>
+  <ul>
+    <li>All activity requires explicit written authorization</li>
+    <li>No engagement outside defined scope</li>
+    <li>No disclosure of sensitive techniques publicly</li>
+    <li>Protection of people, systems, and organizations is the priority</li>
+  </ul>
 </section>
 
-<section>
-  <h3>Tools & Methodologies</h3>
-  <div class="card">
-    <ul>
-      <li>OWASP Top 10</li>
-      <li>Nmap, Burp Suite, Metasploit</li>
-      <li>Web & Network Reconnaissance</li>
-      <li>Secure Configuration Review</li>
-      <li>Responsible Disclosure</li>
-    </ul>
-  </div>
+<section id="experience">
+  <h2>Experience Domain</h2>
+  <p>
+    Experience includes work within high‑impact and safety‑critical
+    technology environments, approached exclusively through
+    authorization, risk control, and responsibility.
+  </p>
+  <p>
+    Capabilities are demonstrated only when required and permitted,
+    never advertised or exposed.
+  </p>
 </section>
 
-<section>
-  <h3>Ethics & Compliance</h3>
-  <div class="card">
-    <p>
-      All security testing activities are conducted legally and ethically,
-      with explicit authorization. I strictly adhere to responsible disclosure
-      principles and focus on improving security rather than exploitation.
-    </p>
-  </div>
+<section id="discipline">
+  <h2>Operational Discipline</h2>
+  <ul>
+    <li>Authorization‑first mindset</li>
+    <li>Controlled validation over uncontrolled demonstration</li>
+    <li>Risk awareness beyond technical curiosity</li>
+    <li>Clear communication with legal and security leadership</li>
+  </ul>
 </section>
+
+<section id="intent">
+  <h2>Employment Intent</h2>
+  <p>
+    I seek a legitimate role where advanced technical capability
+    is applied ethically to protect systems, people, and infrastructure.
+  </p>
+  <p>
+    I explicitly reject unauthorized activity, public exploitation,
+    and any use of skills that could cause harm.
+  </p>
+</section>
+
+</div>
 
 <footer>
-  <p>© 2025 Saleh Aflou — Cybersecurity Portfolio</p>
-  <div>
-    <a href="#" title="GitHub"><i class="fa-brands fa-github"></i></a>
-    <a href="#" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-  </div>
+  <p>
+    Classification: Strictly Restricted – Employment Evaluation Only<br>
+    Owner: Saleh Aflou 59
+  </p>
 </footer>
 
+</div>
 </body>
-</html>
+  </html>
