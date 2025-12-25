@@ -2,186 +2,225 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Saleh Aflou 59 | Ethical Hacker</title>
+<title>Saleh Aflou 59 | Ethical Hacker Platform</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Professional Ethical Hacker Profile – Saleh Aflou 59">
+<meta name="classification" content="INTERNAL – EMPLOYMENT EVALUATION ONLY">
 <style>
+* { box-sizing: border-box; }
+
 body {
   margin: 0;
   font-family: system-ui, -apple-system, Segoe UI, Arial, sans-serif;
-  background: #0e0e0e;
-  color: #eaeaea;
-}
-header {
   background: #0b0b0b;
-  padding: 40px;
-  border-bottom: 1px solid #222;
+  color: #e6e6e6;
+  display: flex;
+  height: 100vh;
 }
-header h1 {
-  margin: 0;
-  font-size: 32px;
-  font-weight: 600;
+
+/* SIDEBAR */
+.sidebar {
+  width: 280px;
+  background: #0f0f0f;
+  border-right: 1px solid #1f1f1f;
+  padding: 30px 20px;
 }
-header p {
-  margin-top: 8px;
-  font-size: 15px;
-  color: #b5b5b5;
+.sidebar h1 {
+  font-size: 20px;
+  margin-bottom: 6px;
 }
-nav {
-  background: #111;
-  border-bottom: 1px solid #222;
-  padding: 12px 40px;
+.sidebar p {
+  font-size: 12px;
+  color: #aaa;
+  margin-bottom: 30px;
 }
-nav a {
-  color: #eaeaea;
-  margin-right: 24px;
-  text-decoration: none;
+.nav-item {
+  padding: 12px 14px;
+  margin-bottom: 6px;
   font-size: 14px;
+  cursor: pointer;
+  border-radius: 4px;
+  color: #d0d0d0;
 }
-nav a:hover {
+.nav-item:hover, .nav-item.active {
+  background: #1a1a1a;
   color: #4fc3f7;
 }
-section {
-  display: none;
-  padding: 60px 40px;
-  max-width: 1100px;
+
+/* MAIN */
+.main {
+  flex: 1;
+  padding: 50px;
+  overflow-y: auto;
 }
-section.active {
+.section {
+  display: none;
+  max-width: 1200px;
+}
+.section.active {
   display: block;
 }
+
 h2 {
-  font-size: 22px;
+  font-size: 26px;
   margin-bottom: 20px;
 }
 h3 {
-  font-size: 17px;
-  margin-top: 25px;
+  font-size: 18px;
+  margin-top: 30px;
 }
 p, li {
   font-size: 15px;
-  line-height: 1.8;
+  line-height: 1.9;
   color: #d0d0d0;
 }
-ul {
-  padding-left: 22px;
+ul { padding-left: 22px; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
 }
-footer {
-  border-top: 1px solid #222;
-  padding: 30px 40px;
+.box {
+  border: 1px solid #222;
+  padding: 22px;
+  font-size: 14px;
+}
+
+.notice {
+  border: 1px dashed #333;
+  padding: 20px;
+  margin-top: 30px;
   font-size: 13px;
-  color: #999;
+  color: #bdbdbd;
 }
-.badge {
-  display: inline-block;
-  border: 1px solid #333;
-  padding: 4px 10px;
-  font-size: 12px;
-  margin-right: 8px;
-  margin-bottom: 6px;
+a {
+  color: #4fc3f7;
+  text-decoration: none;
 }
 </style>
+
 <script>
-function showSection(id) {
-  document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+function show(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
   document.getElementById(id).classList.add('active');
+  document.getElementById('nav-' + id).classList.add('active');
 }
 </script>
 </head>
 
 <body>
 
-<header>
+<!-- SIDEBAR -->
+<div class="sidebar">
   <h1>Saleh Aflou 59</h1>
-  <p>Ethical Hacker & Cybersecurity Specialist</p>
-</header>
+  <p>Ethical Hacker – Professional Platform</p>
 
-<nav>
-  <a href="#" onclick="showSection('about')">About</a>
-  <a href="#" onclick="showSection('ethics')">Ethics</a>
-  <a href="#" onclick="showSection('skills')">Skills</a>
-  <a href="#" onclick="showSection('experience')">Experience</a>
-  <a href="#" onclick="showSection('approach')">Approach</a>
-  <a href="#" onclick="showSection('career')">Career Intent</a>
-</nav>
+  <div class="nav-item active" id="nav-overview" onclick="show('overview')">Overview</div>
+  <div class="nav-item" id="nav-profile" onclick="show('profile')">Professional Profile</div>
+  <div class="nav-item" id="nav-methodology" onclick="show('methodology')">Methodology</div>
+  <div class="nav-item" id="nav-domains" onclick="show('domains')">Capability Domains</div>
+  <div class="nav-item" id="nav-risk" onclick="show('risk')">Risk Framework</div>
+  <div class="nav-item" id="nav-reporting" onclick="show('reporting')">Reporting Model</div>
+  <div class="nav-item" id="nav-ethics" onclick="show('ethics')">Ethics & Governance</div>
+  <div class="nav-item" id="nav-contact" onclick="show('contact')">Professional Contact</div>
+</div>
 
-<section id="about" class="active">
-  <h2>About</h2>
+<!-- MAIN -->
+<div class="main">
+
+<!-- OVERVIEW -->
+<div id="overview" class="section active">
+  <h2>Executive Overview</h2>
   <p>
-    Ethical Hacker focused on identifying real security risks through
-    authorized and responsible security testing. My objective is to help
-    organizations improve resilience, reduce exposure, and protect users.
+    This platform represents a controlled, professional overview of senior‑level
+    ethical hacking expertise, designed exclusively for internal evaluation
+    by security leadership and enterprise recruitment teams.
   </p>
-</section>
+</div>
 
-<section id="ethics">
-  <h2>Ethical Commitment</h2>
+<!-- PROFILE -->
+<div id="profile" class="section">
+  <h2>Professional Profile</h2>
+  <p>
+    Ethical Hacker specializing in identifying, validating, and communicating
+    security risk within authorized and legally defined boundaries.
+  </p>
+</div>
+
+<!-- METHODOLOGY -->
+<div id="methodology" class="section">
+  <h2>Assessment Methodology</h2>
   <ul>
-    <li>All activities are performed only with explicit written authorization</li>
-    <li>Strict adherence to defined scope and legal boundaries</li>
-    <li>No public disclosure of sensitive techniques or findings</li>
-    <li>Security work is guided by responsibility and trust</li>
+    <li>Formal authorization and scope control</li>
+    <li>Threat modeling and attack surface mapping</li>
+    <li>Controlled validation</li>
+    <li>Risk prioritization</li>
+    <li>Executive‑level reporting</li>
   </ul>
-</section>
+</div>
 
-<section id="skills">
-  <h2>Technical Skills</h2>
-  <div class="badge">Web Security (OWASP)</div>
-  <div class="badge">Vulnerability Assessment</div>
-  <div class="badge">Access Control Analysis</div>
-  <div class="badge">Network Security</div>
-  <div class="badge">Risk-Based Reporting</div>
-</section>
+<!-- DOMAINS -->
+<div id="domains" class="section">
+  <h2>Capability Domains</h2>
+  <div class="grid">
+    <div class="box">Advanced Web & Application Security</div>
+    <div class="box">Authentication & Authorization Analysis</div>
+    <div class="box">Infrastructure & Configuration Risk</div>
+    <div class="box">Security Architecture Review</div>
+  </div>
+</div>
 
-<section id="experience">
-  <h2>Security Assessment Experience</h2>
+<!-- RISK -->
+<div id="risk" class="section">
+  <h2>Risk Framework</h2>
+  <div class="grid">
+    <div class="box">Low Impact / Low Likelihood</div>
+    <div class="box">Medium Impact / Medium Likelihood</div>
+    <div class="box">High Impact / High Likelihood</div>
+  </div>
+</div>
 
-  <h3>Authorized Web Application Assessments</h3>
+<!-- REPORTING -->
+<div id="reporting" class="section">
+  <h2>Reporting Model</h2>
   <p>
-    Conducted controlled security reviews of web applications to identify
-    vulnerabilities affecting authentication, authorization, and data exposure.
-    Findings were validated manually and documented with remediation guidance.
+    Findings are translated into business impact, remediation priority,
+    and strategic recommendations suitable for executive decision‑making.
+  </p>
+</div>
+
+<!-- ETHICS -->
+<div id="ethics" class="section">
+  <h2>Ethics & Governance</h2>
+  <ul>
+    <li>No activity without written authorization</li>
+    <li>No disclosure of sensitive techniques</li>
+    <li>Professional responsibility over recognition</li>
+    <li>Trust treated as a critical asset</li>
+  </ul>
+</div>
+
+<!-- CONTACT -->
+<div id="contact" class="section">
+  <h2>Professional Contact</h2>
+
+  <p><strong>Mailfence:</strong> b0x59.aflou@mailfence.com</p>
+  <p><strong>Proton:</strong> saleh.aflou59@proton.me</p>
+  <p><strong>Tuta:</strong> saleh_aflou59.kernel@tuta.io</p>
+  <p><strong>WhatsApp (Employment Only):</strong>
+    <a href="https://wa.me/213674163485" target="_blank">+213 674 163 485</a>
   </p>
 
-  <h3>Infrastructure & Configuration Reviews</h3>
-  <p>
-    Assessed network and system configurations to identify misconfigurations,
-    exposed services, and security weaknesses that could lead to unauthorized
-    access if left unaddressed.
-  </p>
+  <div class="notice">
+    All contact channels are provided strictly for professional employment
+    discussion. No authorization is granted for testing, assessment, or
+    disclosure outside a formally agreed scope.
+  </div>
+</div>
 
-  <h3>Risk-Focused Reporting</h3>
-  <p>
-    Produced clear security reports translating technical findings into
-    business risk, enabling stakeholders to prioritize remediation effectively.
-  </p>
-</section>
-
-<section id="approach">
-  <h2>Professional Approach</h2>
-  <p>
-    My work is guided by understanding attacker techniques while maintaining
-    strict ethical and legal discipline. The goal is prevention, not exploitation,
-    and long-term security improvement rather than short-term demonstration.
-  </p>
-</section>
-
-<section id="career">
-  <h2>Career Intent</h2>
-  <p>
-    I am seeking a professional role in cybersecurity where ethical hacking
-    skills are applied responsibly to protect systems, people, and organizations.
-  </p>
-  <p>
-    I am committed to continuous learning and ethical practice.
-  </p>
-</section>
-
-<footer>
-  <p>
-    © Saleh Aflou 59<br>
-    Ethical Hacker – Professional Profile
-  </p>
-</footer>
+</div>
 
 </body>
   </html>
